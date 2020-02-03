@@ -314,7 +314,7 @@ class Recognizer:
             build_params = PRETRAINED_WEIGHTS[weights]['build_params']
             alphabet = alphabet or PRETRAINED_WEIGHTS[weights]['alphabet']
         else:
-            build_params = DEFAULT_BUILD_PARAMS
+            build_params = build_params or DEFAULT_BUILD_PARAMS
         if alphabet is None:
             alphabet = DEFAULT_ALPHABET
         self.alphabet = alphabet
