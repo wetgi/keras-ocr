@@ -345,7 +345,9 @@ class Recognizer:
         entry in the tuple, making each tuple an (image, sentence, weight) tuple.
 
         Args:
-            image_generator: An image / sentence tuple generator.
+            image_generator: An image / sentence tuple generator. The images should
+                be in color even if the OCR is setup to handle grayscale as they
+                will be converted here.
             batch_size: How many images to generate at a time.
             lowercase: Whether to convert all characters to lowercase before
                 encoding.
@@ -357,7 +359,7 @@ class Recognizer:
         while True:
             batch = [sample for sample, _ in zip(image_generator, range(batch_size))]
             images = [sample[0] for sample in batch]
-            # images = np.array([image.astype('float32') / 255 for image in images])
+            images = np.array([images])
             sentences = [sample[1].strip() for sample in batch]
             if lowercase:
                 sentences = [sentence.lower() for sentence in sentences]
