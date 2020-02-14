@@ -393,7 +393,6 @@ class Recognizer:
         if self.prediction_model.input_shape[-1] == 1 and image.shape[-1] == 3:
             # Convert color to grayscale
             image = cv2.cvtColor(image, code=cv2.COLOR_RGB2GRAY)[..., np.newaxis]
-        image = image.astype('float32') / 255
         return ''.join([
             self.alphabet[idx] for idx in self.prediction_model.predict(image[np.newaxis])[0]
             if idx not in [self.blank_label_idx, -1]
