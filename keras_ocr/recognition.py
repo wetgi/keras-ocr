@@ -359,7 +359,7 @@ class Recognizer:
         while True:
             batch = [sample for sample, _ in zip(image_generator, range(batch_size))]
             images = [sample[0] for sample in batch]
-            images = np.array([images])
+            images = np.array(images)
             sentences = [sample[1].strip() for sample in batch]
             if lowercase:
                 sentences = [sentence.lower() for sentence in sentences]
